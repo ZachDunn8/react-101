@@ -29,12 +29,16 @@ class CoinFlip extends React.Component{
 		// this is a child class of the React.Component class
 		// we MUST call super to use it
 		super();
-		this.test = 'This is a test class property';
+		// this.test = 'This is a test class property';
 		// Nothing special about title, React does not care about it at all
 		this.title = props.title;
+		this.coin = [
+		'twoface-heads.png',
+		'twoface-tails.png'
+		]
 		// State is special. React cares. A lot
 		this.state = {
-			image: 'quarter-heads.jpg'
+			image: 'twoface-heads.png'
 		}
 		this.flipCoin = this.flipCoin.bind(this);
 	}
@@ -46,8 +50,9 @@ class CoinFlip extends React.Component{
 		// Really, listen
 		// WE NEVER CHANGE STATE DIRECTLY.
 		// Everytime state changes, React will call render
+		var coinSide = (Math.round(Math.random()));
 		this.setState({
-			image: 'quarter-tails.jpg'
+			image: this.coin[coinSide]
 		})
 	}
 
@@ -71,7 +76,7 @@ class CoinFlip extends React.Component{
 
 
 ReactDOM.render(
-	<CoinFlip title='Flip the Coin'/>,
+	<CoinFlip title='Flip the Coin...If You Dare...' heads='twoface-heads.png' talis='twoface-tails.png'/>,
 	document.getElementById('root')
 )	
 
